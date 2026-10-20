@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .font-cymystic {
+    font-family: 'CyMYSTIC', 'Outfit', 'Orbitron', 'Space Grotesk', sans-serif;
+  }
+}
+
+@font-face {
+  font-family: 'CyMYSTIC';
+  src: local('Outfit'), local('Orbitron'), local('Space Grotesk');
+  font-weight: 600 900;
+}
+
+/* Custom scrollbars for clean industrial dashboard look */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090c14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e2638;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3650;
+}

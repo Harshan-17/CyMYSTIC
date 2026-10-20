@@ -1,0 +1,6 @@
+{
+  "name": "CYMYSTIC",
+  "description": "Cyber-Physical Threat Detection and Financial Loss Assessment in Industrial Automation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

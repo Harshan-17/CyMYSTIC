@@ -1,0 +1,611 @@
+# CYMYSTIC — FINAL MASTER MVP DIRECTIVE
+## AI-Powered Cyber-Physical Threat Analysis, Financial Loss Assessment and Prevention
+
+### ROLE AND MISSION
+
+Act as a senior full-stack engineer, industrial cybersecurity engineer, AI integration specialist, and product designer.
+
+Upgrade my existing CYMYSTIC application into a complete, demonstrable hackathon MVP.
+
+The existing three screens already work. Preserve them. Do not rebuild the project from scratch, delete working components, or replace functioning logic unnecessarily.
+
+Our deadline is extremely short. Implement the complete essential workflow with the smallest reliable set of changes.
+
+The application must combine:
+1. Industrial monitoring.
+2. Prominent CSV upload and data analysis.
+3. Financial-loss visualisation.
+4. Gemini AI investigation.
+5. Operator identity verification.
+6. Simulated attack prevention.
+7. Actionable AI recommendations with operator-approved execution.
+
+Do not produce only a plan or a mockup. Inspect the current project, implement the changes, run available tests, and report the actual results.
+
+# 1. PROJECT IDENTITY
+
+Product name: CYMYSTIC
+
+Full title: Cyber-Physical Threat Detection and Financial Loss Assessment in Industrial Automation.
+
+The application helps users investigate suspicious machine-control behaviour, analyse industrial CSV records, estimate potential financial losses, understand incident risks using AI, and enforce preventive policies within a controlled software simulation.
+
+All machine operations must remain simulated. The application must never connect to or control real PLCs, factory machines, or physical industrial equipment.
+
+# 2. TECHNOLOGY AND EXISTING ARCHITECTURE
+
+Preserve the existing:
+- React and TypeScript application.
+- Current three screens and their routing.
+- Working simulation engine.
+- Current Firebase and Firestore integration, if configured.
+- Existing Gemini integration, if configured.
+- Protection Mode and "Is this you?" workflow, if implemented.
+- Existing styling and design components.
+
+Use the current Google AI Studio-supported runtime and existing dependencies.
+
+Use Firebase Firestore for shared state and phone-to-laptop synchronisation where already configured or supported.
+
+Use Gemini through the available server-side integration. Never expose a private Gemini API key or privileged service credentials in client-side code.
+
+Do not introduce another frontend framework, machine-learning pipeline, microservice architecture, or unnecessary infrastructure.
+
+# 3. TASTE SKILL AND VISUAL DESIGN
+
+Before making UI changes, inspect the existing design.
+
+If the environment provides terminal access and supports skill installation, attempt:
+
+`npx skills add Leonxlnx/taste-skill`
+
+Inspect the available skill instructions and apply appropriate frontend design guidance. Prefer the available industrial-brutalist and minimalist design approaches when supported.
+
+Do not block implementation if installation is unsupported. Follow the design requirements below and state honestly whether installation succeeded.
+
+## CYMYSTIC design direction
+
+Keep the existing CYMYSTIC branding.
+
+Use:
+- Charcoal or graphite surfaces.
+- Off-white text.
+- Muted green for normal operation.
+- Restrained amber for warnings.
+- Red for critical risks.
+- One consistent primary font.
+- Clear typography and adequate whitespace.
+- Simple, readable charts.
+- A few purposeful borders rather than boxes around everything.
+
+Avoid generic AI-generated dashboard aesthetics, excessive cards, tiny technical labels, decorative charts, oversized gradients, unnecessary animations, and additional dashboards.
+
+The application should look like a focused industrial investigation tool rather than a generic analytics template.
+
+# 4. PRESERVE EXACTLY THREE PRIMARY SCREENS
+
+Do not create another primary dashboard.
+
+## Screen A — Operations Overview
+
+Route: `/dashboard`
+
+Keep the existing monitoring dashboard and add a **large, highly visible CSV upload bar directly within this screen**.
+
+The upload section should be one of the first things the user notices, without overwhelming the machine monitoring information.
+
+It must include:
+- A clear heading such as "Analyse Industrial Data".
+- A wide drag-and-drop CSV upload area.
+- A visible "Upload CSV" button.
+- A small indication of the supported CSV format.
+- A downloadable sample CSV link.
+- Upload progress and validation feedback.
+- A brief message showing how many records were successfully imported.
+
+After a valid upload, the dashboard must update using the actual uploaded data and display meaningful charts, loss visualisation, and AI investigation options.
+
+Do not merely display the filename.
+
+Preserve the existing machine status, target temperature, simulated temperature trend, latest incident, protection status, and navigation.
+
+## Screen B — Incident Investigation
+
+Route: `/incidents`
+
+Preserve the existing incident investigation screen.
+
+Display:
+- A concise incident summary.
+- Suspicious command and machine evidence.
+- A simple sensor chart.
+- Why the event was flagged.
+- Protection and operator-verification outcomes.
+- Estimated potential financial loss.
+- The CYMYSTIC AI Investigator.
+- Context-aware questions and actionable preventive recommendations.
+
+Integrate CSV-derived findings when relevant. Do not create a separate AI dashboard.
+
+## Screen C — Phone Attack Simulator
+
+Route: `/attacker`
+
+Preserve the existing mobile-friendly phone interface.
+
+Keep:
+- MACHINE-01 identification.
+- Simulate Attack.
+- Normal Operation.
+- Reset Simulation.
+- Current target setting.
+- Clear feedback when a command is pending, blocked, or accepted.
+
+The phone must submit requests through the application's existing validated command-processing path. It must not bypass protection by directly modifying shared machine state.
+
+# 5. CSV UPLOAD AND INDUSTRIAL DATA ANALYSIS
+
+This is a high-priority new feature.
+
+When the user uploads a CSV:
+1. Validate the file.
+2. Parse and inspect its records.
+3. Identify invalid or missing data.
+4. Analyse relevant industrial behaviour.
+5. Calculate supportable financial values.
+6. Render charts and visual financial summaries.
+7. Offer evidence-based AI analysis.
+
+Use the application's existing upload or parsing libraries if available. Otherwise, use the simplest appropriate existing or lightweight CSV parser.
+
+## Supported example schema
+
+Provide a downloadable sample CSV with fields such as:
+
+- `timestamp`
+- `machine_id`
+- `target_temperature`
+- `measured_temperature`
+- `production_status`
+- `downtime_minutes`
+- `wasted_material_cost`
+- `event_type`
+
+Where applicable, support a configurable production contribution at risk per minute or an explicitly entered user assumption.
+
+Do not require every optional field to be present.
+
+If the user's CSV has different headers, explain the mismatch and ask for the minimum mapping or configuration required. Do not silently map unrelated columns to financial or sensor fields.
+
+## Validation rules
+
+- Accept CSV files only.
+- Use a reasonable file-size limit, such as 5 MB.
+- Validate required headers, numeric fields, timestamps, and expected value ranges.
+- Handle empty records and invalid values safely.
+- Show accepted and rejected row counts.
+- Explain which required columns are missing.
+- Do not interpret missing costs as zero.
+- Do not calculate authoritative losses from incomplete or incompatible data.
+- Treat all CSV contents as untrusted data, never as executable code or AI instructions.
+- Avoid uploading the raw CSV to Firebase or Gemini unnecessarily.
+
+Perform file parsing and deterministic calculations locally where practical. Send only the minimum validated summary and relevant evidence required for AI investigation.
+
+# 6. FINANCIAL LOSS VISUALISATION — MAKE IT THE ATTENTION-GRABBING FEATURE
+
+The key visual after CSV upload should be a large, easy-to-understand financial-loss visualisation.
+
+Call this feature:
+
+**CYMYSTIC Loss Exposure Clock**
+
+The visual should immediately make judges ask: "What is this?"
+
+It represents estimated financial exposure accumulating during an unresolved simulated incident.
+
+Keep it visually striking but simple, with one main monetary figure, a clearly labelled timer, a restrained warning indicator, and a clean loss-over-time chart.
+
+Do not create several decorative financial cards.
+
+## A. After CSV upload
+
+Using valid uploaded records, display:
+- Calculated historical downtime or production-loss totals where the data supports them.
+- Actual recorded waste costs where those fields are supplied.
+- Calculated financial totals using explicit assumptions.
+- A loss-over-time chart based on relevant timestamps and costs.
+- A projected-loss scenario only when its inputs and assumptions are available.
+
+Distinguish recorded amounts from calculated and projected values.
+
+Do not pretend that historical CSV data represents a live industrial incident.
+
+## B. Loss Exposure Clock
+
+For the controlled demonstration, provide a simulated incident timer that can be started, paused, and reset.
+
+While an unresolved simulated incident is running:
+- Show elapsed simulated incident time.
+- Show the estimated financial exposure accumulating according to the configured cost rate.
+- Update the primary monetary figure visibly.
+- Update a simple financial exposure chart.
+- Allow the demonstration to end when the simulated incident is resolved or protection prevents the scenario from progressing.
+
+Use consistent units and mathematically correct calculations.
+
+For example:
+
+Estimated exposure =
+(simulated downtime minutes × production contribution at risk per minute)
++ applicable material wastage
++ applicable recovery costs.
+
+If the clock uses accelerated simulated time, label this clearly.
+
+The default rate must be a configurable illustrative assumption unless a validated uploaded dataset supplies a suitable value.
+
+Do not use arbitrary random monetary changes, artificial real-world urgency, or an invented prediction presented as factual.
+
+The visual must prominently state:
+
+"SIMULATED FINANCIAL EXPOSURE — ESTIMATE"
+
+Historical financial losses, current simulated exposure, and hypothetical future losses must be distinguishable.
+
+## C. After protection is applied
+
+When Protection Mode blocks a simulated attack:
+- Stop any ongoing simulated loss progression associated with that attack.
+- Display the prevention outcome.
+- Show the difference between the protected scenario and an explicitly simulated unprotected scenario, if both have valid calculations.
+- Label any difference as hypothetical avoided exposure, not verified savings.
+
+The calculator, not Gemini, produces all financial numbers.
+
+# 7. GEMINI AI — MAKE IT USEFUL THROUGHOUT THE WORKFLOW
+
+Use Gemini as CYMYSTIC's evidence-based industrial investigation assistant.
+
+Do not just add a generic chatbot.
+
+Reuse the existing Gemini integration if available. Use the supported server-side runtime and keep credentials out of browser code.
+
+## AI capability A — Explain uploaded CSV findings
+
+After valid CSV analysis, let the user select "Analyse with AI".
+
+Supply Gemini with:
+- A structured summary of valid records.
+- Relevant abnormal commands.
+- Sensor trends and timestamps.
+- Recorded production interruptions.
+- Available material-cost records.
+- Deterministic detection findings.
+- Financial calculator inputs and results.
+
+Gemini should explain:
+1. What happened in plain English.
+2. Which records support the findings.
+3. Which patterns deserve attention.
+4. What alternative explanations are possible.
+5. What evidence is missing.
+6. What may cause further losses.
+7. What preventive measures the operator should consider next.
+
+The model must not invent records, values, equipment details, or financial figures.
+
+If the uploaded data cannot support an incident conclusion, Gemini must say so.
+
+## AI capability B — Explain the Loss Exposure Clock
+
+Add a small "Ask CYMYSTIC AI" input or contextual question action within the existing dashboard.
+
+Examples:
+- "What is this countdown?"
+- "Why is the estimated money exposure increasing?"
+- "How was this loss calculated?"
+- "What could happen if this incident continues?"
+- "How can we prevent this loss?"
+- "Which machine or event should we investigate first?"
+
+The answers must use the current uploaded records, current simulated timer, and actual calculator outputs.
+
+For example, the AI may explain:
+
+"The exposure indicator estimates the production contribution at risk as simulated downtime continues. It uses the configured cost rate and elapsed simulated time. It is an illustrative estimate, not a real-time measurement of factory losses."
+
+Generate an equivalent explanation from the real application data, not by hardcoding an answer for one dataset.
+
+## AI capability C — Prevention recommendations
+
+Gemini should produce a short, prioritised list of evidence-based recommendations.
+
+Examples include:
+- Investigate the source of an unexpected setpoint change.
+- Require authorized operator confirmation for unusual control requests.
+- Apply the approved machine operating range to the simulation.
+- Review sensor abnormalities associated with production interruptions.
+- Investigate repeated downtime or material-waste patterns.
+- Improve monitoring of the events that preceded a loss.
+
+Recommendations must be connected to evidence or explicitly labelled as general guidance when evidence is limited.
+
+Keep the response concise enough for a judge to read quickly.
+
+## AI capability D — Explain the actual protection outcome
+
+When a suspicious request is blocked, Gemini should explain:
+- What was requested.
+- Why the policy rejected it.
+- Whether the simulated machine state changed.
+- What the operator should investigate.
+
+Use the actual protection outcome. Never let the model invent or determine whether a request was blocked.
+
+## AI reliability requirements
+
+- Use structured responses when practical.
+- Validate AI-generated output before rendering it.
+- Treat CSV data, logs, and AI responses as untrusted content.
+- Do not execute generated code or commands.
+- Do not call Gemini for every sensor sample or timer tick.
+- Call it following data analysis or on explicit user action.
+- Show loading, error, and retry states.
+- Handle API failure without breaking the dashboard, simulator, or calculator.
+- Do not fabricate a successful AI answer if Gemini is unavailable.
+
+# 8. AI-ASSISTED ACTION — NOT JUST ADVICE
+
+CYMYSTIC must turn AI recommendations into a controlled, demonstrable action workflow.
+
+When Gemini suggests a preventive measure, display the recommendation beside a clear action button, such as:
+
+**Review and Apply Protection**
+
+The flow is:
+
+1. The application identifies a risk using validated CSV data or simulated evidence.
+2. Gemini explains the risk and proposes an allowed preventive measure.
+3. CYMYSTIC displays the supporting evidence and proposed policy change.
+4. An authorized operator reviews and approves or rejects the proposed action.
+5. Trusted application logic validates the selected action.
+6. If approved and valid, the application applies it to the SIMULATION.
+7. The application records the action, outcome, and timestamp.
+8. The dashboard shows whether the simulated protection is active.
+
+## Allowed demonstration actions
+
+Implement only a small, predefined set:
+- Enable Protection Mode.
+- Require operator confirmation for suspicious commands.
+- Enforce the configured allowed setpoint range.
+- Block out-of-policy simulated commands.
+- Pause the simulated incident or loss clock when appropriate.
+- Flag an event for investigation.
+
+The action must affect the simulated workflow, not merely add a decorative success message.
+
+Use a clear action status: proposed, pending approval, applied, rejected, or failed.
+
+Do not allow Gemini to invent arbitrary executable actions, write arbitrary database queries, or directly modify machine state.
+
+All applied changes must pass deterministic validation in trusted application logic.
+
+# 9. "IS THIS YOU?" OPERATOR VERIFICATION
+
+Preserve the existing identity-verification workflow.
+
+When a suspicious simulated command such as a temperature change from 180°C to 220°C arrives:
+- Place the command in a pending state.
+- Display an "Is this you?" confirmation on the trusted operator dashboard.
+- Show the requested change and explain why it is suspicious.
+- Provide "Yes, I requested this" and "No, block this request" controls.
+
+If the operator denies the request, reject it and record the decision.
+
+If the operator does not respond before the configured timeout, reject it by default.
+
+If the operator confirms the request:
+- Validate identity and authorization through the trusted approval mechanism.
+- Validate the requested value against the configured policy.
+- Reject out-of-policy commands even after successful confirmation.
+
+For example, if the allowed simulated range is 175°C–185°C, a request for 220°C must remain blocked.
+
+The phone submitting the request must not approve its own request.
+
+Do not treat an AI-generated explanation or a self-reported confirmation as identity proof.
+
+# 10. DETERMINISTIC PROTECTION AND DETECTION
+
+Keep the trusted protection engine separate from Gemini.
+
+The engine must validate incoming commands before changing simulated machine state.
+
+It must:
+- Validate command structure and numeric ranges.
+- Apply approved protection policies.
+- Reject out-of-policy requests.
+- Record blocked attempts and reasons.
+- Prevent a client from bypassing validation by directly writing a machine state.
+- Maintain consistent state across devices.
+- Handle duplicate and stale events.
+
+Default simulated machine settings:
+- Normal target: 180°C.
+- Example allowed range: 175°C–185°C.
+- Suspicious request: 220°C.
+
+These values are configurable demonstration assumptions, not real industrial safety limits.
+
+The detection engine should distinguish:
+- Normal operation.
+- Suspicious command without a correlated physical incident.
+- Physical anomaly without suspicious command evidence.
+- Correlated potential cyber-physical incident.
+- Blocked command that did not change simulated machine state.
+
+Gemini can explain the results but must not override policy decisions.
+
+# 11. FIREBASE AND CROSS-DEVICE SYNCHRONISATION
+
+Reuse the existing Firebase configuration if available.
+
+If Firebase is not yet configured, inspect the supported AI Studio integration and request approval for the necessary setup when prompted.
+
+The phone and laptop must share the same session and receive relevant event updates through the shared backend.
+
+Synchronize:
+- Pending command requests.
+- Operator decisions.
+- Protection settings.
+- Event records.
+- Incident outcomes.
+- Current simulation state.
+- Reset operations.
+
+Use suitable authentication and authorization, restrictive Firestore security rules, event identifiers, timestamps, and validation.
+
+Never use unrestricted public read/write rules.
+
+Do not upload sensitive CSV contents unnecessarily. Prefer local processing and store concise summaries or selected results when persistence is required.
+
+Never claim cross-device synchronisation works until it has been tested.
+
+If the backend is unavailable, keep existing functionality intact, display a clear error, and report what needs configuration.
+
+# 12. SIMPLIFIED USER EXPERIENCE
+
+The application must remain easy to understand.
+
+On the Operations Overview screen:
+- Keep the machine monitoring section.
+- Add one prominent CSV upload bar.
+- Show upload status and validated row count.
+- Display the main loss-exposure visual after analysis.
+- Show a few meaningful charts and financial figures.
+- Provide one obvious action to request AI analysis.
+
+On Incident Investigation:
+- Show command evidence, sensor trend, explanation, financial impact, and recommended action.
+- Keep the AI Analyst section compact.
+- Include the operator-approval and prevention outcome where relevant.
+
+On the Phone Attack Simulator:
+- Keep the existing attack, normal operation, and reset controls.
+- Show pending, blocked, and accepted outcomes clearly.
+
+Avoid unnecessary labels, excessive cards, tiny technical text, decorative visualizations, extra dashboards, and redundant navigation.
+
+# 13. SECURITY AND FAILURE HANDLING
+
+Before implementing, inspect the project's trust boundaries and produce a concise threat summary table.
+
+Cover:
+- Malformed CSV input.
+- Spreadsheet formula injection and untrusted text.
+- Prompt injection hidden inside uploaded records.
+- Fabricated AI assessments.
+- Incorrect or misleading financial estimates.
+- Unauthorized policy changes.
+- Client-side bypass of command validation.
+- Firebase access and cross-device data exposure.
+- API credential leakage.
+
+Apply appropriate mitigations without introducing unnecessary complexity.
+
+Additional requirements:
+- Validate input and generated output.
+- Escape displayed user-provided content.
+- Do not execute CSV or AI-generated instructions.
+- Use a secure server-side Gemini integration.
+- Keep private secrets out of the frontend.
+- Do not let AI directly write to Firestore or execute arbitrary actions.
+- Make database failures visible.
+- Preserve relevant user input when operations fail.
+- Clearly distinguish historical data, simulated values, calculated estimates, and AI explanations.
+
+# 14. TESTING REQUIREMENTS
+
+Test the complete workflow:
+
+1. The three existing screens still work.
+2. A valid CSV can be uploaded from the main dashboard.
+3. The sample CSV can be downloaded and uploaded.
+4. Malformed files and missing required columns produce useful feedback.
+5. Actual validated CSV data drives the charts and loss calculation.
+6. Missing cost fields do not produce misleading financial results.
+7. The loss exposure clock uses a visible configured rate and correct arithmetic.
+8. The timer can be paused and reset.
+9. Gemini explains the current CSV findings and actual loss calculation.
+10. AI answers "What is this countdown?" using the current data.
+11. AI recommends preventive measures linked to available evidence.
+12. The operator can review and apply a permitted protective action to the simulation.
+13. An out-of-policy command is blocked.
+14. The "Is this you?" challenge correctly handles confirmation, rejection, and timeout.
+15. The requester cannot approve its own request.
+16. Gemini cannot override protection policies or invent financial results.
+17. Firebase synchronisation works where configured.
+18. Reset removes active simulation state and prevents stale events from returning.
+19. AI and backend failures do not break the rest of the application.
+20. The app builds successfully and has no unresolved critical errors.
+
+# 15. STRICT MVP BOUNDARIES
+
+Do not create:
+- A fourth dashboard.
+- A separate CSV analytics application.
+- An AI chatbot page.
+- Real industrial machine integrations.
+- ML training pipelines.
+- Arbitrary AI agents that can run commands.
+- Unnecessary backend services.
+- Complicated financial forecasting.
+- Fake live data or invented losses.
+- Decorative actions that do not change the simulation.
+
+Implement the smallest working version that demonstrates the entire workflow.
+
+# 16. EXECUTION PRIORITIES
+
+Work in this order:
+
+P0:
+- Preserve the three working screens.
+- Add the prominent CSV upload bar to Operations Overview.
+- Parse and validate the CSV.
+- Generate actual charts and transparent financial calculations.
+- Implement the Loss Exposure Clock.
+
+P1:
+- Integrate Gemini analysis grounded in uploaded data.
+- Answer contextual questions about the financial visualisation.
+- Generate preventive recommendations.
+
+P2:
+- Add operator-approved protective actions that affect the simulated command-validation engine.
+- Preserve and verify the "Is this you?" workflow.
+
+P3:
+- Verify Firebase synchronisation, reset, errors, and final presentation quality.
+
+Inspect the existing codebase and continue implementing. Do not stop after producing a plan. Preserve working code, keep changes focused, and prioritize the end-to-end demonstration.
+
+# 17. DEFINITION OF DONE
+
+CYMYSTIC is ready when a judge can see this complete story:
+
+1. Upload a CSV on the main dashboard.
+2. See the data represented visually.
+3. See how estimated financial exposure changes over simulated time.
+4. Ask Gemini why the exposure is increasing.
+5. Receive an evidence-based explanation and preventive recommendation.
+6. Review and approve a preventive action.
+7. Trigger a suspicious command from the phone.
+8. See the protection engine block the out-of-policy command.
+9. See the dashboard explain what happened and record the outcome.
+
+At completion, report the implemented files, actual test results, Firebase and Gemini configuration status, and any unresolved limitations.
+
+Begin implementation now. Do not ask me to submit separate prompts for individual features. Complete the highest-priority working MVP using the existing CYMYSTIC project and its current architecture.
